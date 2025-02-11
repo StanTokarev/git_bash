@@ -1,0 +1,34 @@
+2.Зайти в домашнюю директорию через терминал: cd ~
+3.Создать папку test 3: mkdir test3
+4. Добавить в папку test 3 три файла 4, 5 и 6, в каждом из которых должно быть по 4 строки row1, row2, row3, row4: cd test3; touch 4.txt 5.txt 6.txt; echo row1 >> 4.txt; echo row2 >> 4.txt; echo row3 >> 4.txt; echo row4 >> 4.txt; cat 4.txt > 5.txt; cat 4.txt > 6.txt
+5.Найдите строку row2 в файле 5: grep -i "row2" 5.txt
+6.Найдите строку row в папке test3: grep -R "row"
+7.Посчитайте сколько строк с содержимым row в файле 6: grep -c "row" 6.txt
+8.Найдите файл 5 внутри папки test3: find 5.txt OR find -name "5.txt" OR find /home/stan/test3 -name "5.txt"
+9.Используя команду find, удалите файл 5: find -name "5.txt" -delete
+10.Используя команду echo, добавьте слово test в файл 4: echo test >> 4.txt; cat 4.txt
+11.Замените слово test в файле 4 на fail: sed -i 's/test/fail/g' 4.txt
+12.Добавьте в файл 4 слово test так, чтобы сохранилось содержимое: echo test >> 4.txt OR sed -i '1itest' 4.txt
+13.Просмотрите все процессы для юзеров не только в консоли, которые происходят в системе: top OR ps aux
+14.Убейте процесс 666 в консоли: kill 666
+14 answer bash: kill: (666) - No such process
+15.Узнайте доступность ресурса rusau.net, используя ping: ping rusau.net
+16.Отправьте 5 пакетов на сайт rusau.net: 
+17. Используя GET и команду curl, получите информацию о зарегистрированных питомцах с любым статусом на https://petstore.swagger.io/: curl -X GET "https://petstore.swagger.io/v2/pet/findByStatus?status=available,pending,sold"
+18.Используя POST и команду curl, создайте нового пользователя на https://petstore.swagger.io/:
+
+curl -X POST "https://petstore.swagger.io/v2/user" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "id": 123,
+           "username": "new_user",
+           "firstName": "Stan",
+           "lastName": "Tokarev",
+           "email": "stan.tokarev@yahoo.com",
+           "password": "securepassword",
+           "phone": "1234567890",
+           "userStatus": 1
+         }'
+
+I checked if the new user was created successfully:
+curl -X GET "https://petstore.swagger.io/v2/user/{new_user}"
